@@ -8,6 +8,16 @@ function Contact() {
   });
 
   const submitContact = async () => {
+    if (!msg.name || !msg.email || !msg.message) {
+    alert("All fields are required");
+    return;
+  }
+
+  if (!msg.email.includes("@")) {
+    alert("Please enter a valid email address");
+    return;
+    
+  }
     await fetch("http://localhost:5000/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
